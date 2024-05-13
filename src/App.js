@@ -1,20 +1,40 @@
 import "./App.css";
+import { Image } from "./components/Image";
+import ProductsCards from "./components/ProductsCards";
+import Title from "./components/Title";
+import products from "./data";
 
 function App() {
-  const shopname = "coffeShop";
-  const description = "This a coffe shop";
-
+  const productsList = products.map((product) => {
+    return (
+      <ProductsCards
+        name={product.name}
+        price={product.price}
+        image={product.image}
+      />
+    );
+  });
   return (
-    <div>
-      <center>
-        <h1>{shopname}</h1>
-        <br />
-        <h3>{description}</h3>
-        <img
-          width="1500vw"
-          src="https://media.istockphoto.com/id/1218963825/photo/lovely-little-independent-coffee-shop.jpg?s=1024x1024&w=is&k=20&c=Ytmb-BFO-YPOJV-El-hxLFKclfsjkbWbPc_18h0BX70="
-        />
-      </center>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Title />
+      <Image />
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          width: "70vh",
+        }}
+      >
+        {productsList}
+      </div>
     </div>
   );
 }
